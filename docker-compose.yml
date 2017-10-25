@@ -1,0 +1,23 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      TZ: 'Asia/Shanghai'
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - 8008:3306
+    networks:
+      - stoicism
+  redis:
+    image: redis:latest
+    ports:
+      - 8009:6379
+    networks:
+      - stoicism
+    environment:
+      TZ: 'Asia/Shanghai'
+networks:
+  stoicism:
